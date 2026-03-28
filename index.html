@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <title>NurseLife 😂 | Nursing Memes & Videos</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdef5 100%);
+            color: #1a2a3a;
+            text-align: center;
+        }
+
+        nav {
+            background: #0a4b6e;
+            padding: 18px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-size: 17px;
+            font-weight: bold;
+            transition: 0.3s;
+            padding: 8px 12px;
+            border-radius: 25px;
+            display: inline-block;
+        }
+
+        nav a:hover {
+            background: #ffd966;
+            color: #0a4b6e;
+            transform: scale(1.05);
+        }
+
+        .section {
+            margin: 50px auto;
+            padding: 20px;
+            max-width: 1300px;
+        }
+
+        h1 {
+            font-size: 3em;
+            color: #0a4b6e;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            font-size: 2em;
+            color: #1e6f5c;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #ffd966;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            color: #0a4b6e;
+            margin-bottom: 15px;
+        }
+
+        .box {
+            background: white;
+            padding: 20px;
+            margin: 20px auto;
+            width: 320px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        .box:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 35px rgba(0,0,0,0.15);
+        }
+
+        .gallery-box {
+            width: 300px;
+            position: relative;
+        }
+
+        img {
+            width: 100%;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        img:hover {
+            opacity: 0.9;
+            transform: scale(1.02);
+        }
+
+        .like-btn {
+            background: #f0f0f0;
+            border: none;
+            padding: 8px 15px;
+            margin-top: 12px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .like-btn:hover {
+            background: #ff6b6b;
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .like-btn.liked {
+            background: #ff4757;
+            color: white;
+        }
+
+        .like-count {
+            background: #0a4b6e;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 20px;
+            font-size: 12px;
+            margin-left: 8px;
+        }
+
+        .total-likes {
+            background: #1e6f5c;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 40px;
+            display: inline-block;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .stress-meter {
+            background: white;
+            padding: 20px;
+            border-radius: 30px;
+            max-width: 500px;
+            margin: 20px auto;
+        }
+
+        .stress-bar {
+            width: 100%;
+            height: 30px;
+            background: #e0e0e0;
+            border-radius: 20px;
+            overflow: hidden;
+            margin: 15px 0;
+        }
+
+        .stress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #4caf50, #ff9800, #f44336);
+            width: 0%;
+            transition: width 0.5s;
+            border-radius: 20px;
+        }
+
+        button {
+            background: #0a4b6e;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 8px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #ffd966;
+            color: #0a4b6e;
+            transform: scale(1.05);
+        }
+
+        .upload-area {
+            background: white;
+            padding: 25px;
+            border-radius: 25px;
+            max-width: 500px;
+            margin: 0 auto 30px auto;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .admin-area {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            padding: 20px;
+            border-radius: 25px;
+            margin-bottom: 20px;
+        }
+
+        .admin-area input {
+            padding: 10px;
+            margin: 10px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+        }
+
+        input[type="file"] {
+            margin: 15px 0;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            width: 100%;
+        }
+
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+            cursor: pointer;
+        }
+
+        .lightbox-content {
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            max-height: 90%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 15px;
+        }
+
+        .close-lightbox {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .close-lightbox:hover {
+            color: #ffd966;
+        }
+
+        video {
+            width: 100%;
+            border-radius: 15px;
+            max-height: 250px;
+        }
+
+        footer {
+            background: #0a4b6e;
+            color: white;
+            padding: 20px;
+            margin-top: 50px;
+        }
+
+        .delete-all-btn {
+            background: #dc3545;
+            margin-bottom: 20px;
+        }
+
+        .delete-all-btn:hover {
+            background: #c82333;
+            color: white;
+        }
+
+        .admin-badge {
+            background: #ffc107;
+            color: #856404;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .box, .gallery-box {
+                width: 280px;
+            }
+            nav a {
+                margin: 0 8px;
+                font-size: 13px;
+                padding: 5px 10px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<nav>
+    <a href="#home">🏠 Home</a>
+    <a href="#gallery">📸 Gallery</a>
+    <a href="#videos">🎬 Videos</a>
+    <a href="#struggles">😭 Struggles</a>
+</nav>
+
+<!-- Lightbox -->
+<div id="lightbox" class="lightbox" onclick="closeLightbox()">
+    <span class="close-lightbox">&times;</span>
+    <img class="lightbox-content" id="lightbox-img">
+</div>
+
+<!-- Home Section -->
+<div id="home" class="section">
+    <h1>🩺 NurseLife 😂</h1>
+    <p style="font-size: 1.2em;">Where stress meets humor | Nursing School Edition</p>
+
+    <div class="stress-meter">
+        <h3>😵 Stress Meter</h3>
+        <div class="stress-bar">
+            <div class="stress-fill" id="stressFill"></div>
+        </div>
+        <p id="stressText">Your stress level: 0%</p>
+        <button onclick="increaseStress()">💀 Increase Stress</button>
+        <button onclick="resetStress()">😇 Reset Stress</button>
+    </div>
+</div>
+
+<!-- Gallery Section -->
+<div id="gallery" class="section">
+    <h2>📸 Nursing Memes Gallery</h2>
+    <div id="totalLikesDisplay" class="total-likes">❤️ Total Likes: 0</div>
+    <div id="imageCount" style="margin-bottom: 15px; color: #0a4b6e;"></div>
+    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;" id="galleryContainer">
+        <p>🔍 جاري البحث عن الصور...</p>
+    </div>
+</div>
+
+<!-- Videos Section -->
+<div id="videos" class="section">
+    <h2>🎬 Nursing Short Videos</h2>
+    
+    <div class="upload-area">
+        <div class="admin-badge">🔐 لوحة التحكم (للمسؤول فقط)</div>
+        
+        <div id="adminPanel">
+            <input type="password" id="adminPassword" placeholder="أدخل كلمة السر" style="padding: 10px; margin-bottom: 15px; width: 80%;">
+            <button onclick="checkPassword()" style="background: #1e6f5c;">🔓 تسجيل الدخول</button>
+        </div>
+        
+        <div id="uploadControls" style="display: none;">
+            <h3>📤 إضافة فيديو جديد</h3>
+            <input type="file" id="videoUpload" accept="video/*">
+            <button onclick="uploadVideo()">➕ إضافة الفيديو</button>
+            <button onclick="deleteAllVideos()" class="delete-all-btn" style="background: #dc3545;">🗑️ حذف كل الفيديوهات</button>
+            <p id="uploadMessage" style="margin-top: 10px; font-size: 14px;"></p>
+        </div>
+        
+        <div id="logoutControls" style="display: none; margin-top: 10px;">
+            <button onclick="logout()" style="background: #6c757d;">🚪 تسجيل الخروج</button>
+        </div>
+        
+        <p id="storageInfo" style="font-size: 12px; color: #666; margin-top: 10px;"></p>
+    </div>
+    
+    <div id="videoGallery" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 25px; margin-top: 20px;"></div>
+</div>
+
+<!-- Struggles Section -->
+<div id="struggles" class="section">
+    <h2>😭 Student Struggles</h2>
+    <div class="box">
+        <p>🛌 No sleep. Just stress.</p>
+        <p>☕ Coffee is my life</p>
+        <p>💀 Dead inside but still smiling 🙂</p>
+        <p>📚 5 textbooks, 1 night challenge</p>
+        <p>🩺 "I chose this career" *cries*</p>
+    </div>
+</div>
+
+<footer>
+    <p>© 2026 NurseLife 😂 | Nursing School Humor | 💙 For all future nurses</p>
+</footer>
+
+<script>
+    // ========== كلمة السر ==========
+    const ADMIN_PASSWORD = "nurse2024";  // يمكنك تغييرها إلى أي كلمة سر تريدها
+    
+    let isAdmin = false;
+    
+    function checkPassword() {
+        const password = document.getElementById('adminPassword').value;
+        if (password === ADMIN_PASSWORD) {
+            isAdmin = true;
+            document.getElementById('adminPanel').style.display = 'none';
+            document.getElementById('uploadControls').style.display = 'block';
+            document.getElementById('logoutControls').style.display = 'block';
+            document.getElementById('uploadMessage').innerHTML = '<span style="color: green;">✅ تم تسجيل الدخول كمسؤول</span>';
+            setTimeout(() => {
+                const msg = document.getElementById('uploadMessage');
+                if (msg.innerHTML === '<span style="color: green;">✅ تم تسجيل الدخول كمسؤول</span>') {
+                    msg.innerHTML = '';
+                }
+            }, 2000);
+        } else {
+            document.getElementById('uploadMessage').innerHTML = '<span style="color: red;">❌ كلمة السر خطأ</span>';
+            setTimeout(() => {
+                document.getElementById('uploadMessage').innerHTML = '';
+            }, 2000);
+        }
+    }
+    
+    function logout() {
+        isAdmin = false;
+        document.getElementById('adminPanel').style.display = 'block';
+        document.getElementById('uploadControls').style.display = 'none';
+        document.getElementById('logoutControls').style.display = 'none';
+        document.getElementById('adminPassword').value = '';
+        document.getElementById('uploadMessage').innerHTML = '<span style="color: #666;">🔒 تم تسجيل الخروج</span>';
+        setTimeout(() => {
+            const msg = document.getElementById('uploadMessage');
+            if (msg.innerHTML === '<span style="color: #666;">🔒 تم تسجيل الخروج</span>') {
+                msg.innerHTML = '';
+            }
+        }, 2000);
+    }
+    
+    // Stress Meter
+    let stress = 0;
+    function updateStressDisplay() {
+        document.getElementById("stressFill").style.width = stress + "%";
+        document.getElementById("stressText").innerText = "Your stress level: " + stress + "%";
+    }
+    function increaseStress() { stress = Math.min(100, stress + 10); updateStressDisplay(); }
+    function resetStress() { stress = 0; updateStressDisplay(); }
+
+    // ========== معرض الصور ==========
+    let galleryImages = [];
+    let likes = [];
+    let totalLikes = 0;
+
+    const yourImageNames = [
+        '5924963284291357734_121.jpg',
+        '5924963284291357735_121.jpg',
+        '5924963284291357736_121.jpg',
+        '5924963284291357737_121.jpg',
+        '5924963284291357738_121.jpg',
+        '5924963284291357739_121.jpg',
+        '5924963284291357740_121.jpg',
+        '5924963284291357741_121.jpg',
+        '5924963284291357742_121.jpg',
+        '5924963284291357743_121.jpg',
+        '5924963284291357744_121.jpg',
+        '5924963284291357745_121.jpg',
+        '5924963284291357746_121.jpg',
+        '5924963284291357747_121.jpg',
+        '5924963284291357748_121.jpg',
+        '5924963284291357749_121.jpg'
+    ];
+
+    async function loadImagesFromFolder() {
+        const container = document.getElementById('galleryContainer');
+        const imageCountDiv = document.getElementById('imageCount');
+        
+        let foundImages = [];
+        
+        for (let i = 0; i < yourImageNames.length; i++) {
+            const imgName = yourImageNames[i];
+            const exists = await imageExists(imgName);
+            if (exists) {
+                foundImages.push({ src: imgName, index: i });
+            }
+        }
+        
+        if (foundImages.length === 0) {
+            container.innerHTML = `
+                <div style="background: #fff3cd; padding: 30px; border-radius: 20px; margin: 20px;">
+                    <h3>⚠️ لم يتم العثور على صور</h3>
+                    <p>تأكد من وضع الصور في نفس مجلد ملف index.html</p>
+                    <button onclick="location.reload()" style="margin-top: 15px;">🔄 إعادة تحميل</button>
+                </div>
+            `;
+            imageCountDiv.innerHTML = '📭 لم يتم العثور على صور';
+            return;
+        }
+        
+        galleryImages = foundImages;
+        likes = new Array(galleryImages.length).fill(0);
+        totalLikes = 0;
+        updateTotalLikesDisplay();
+        imageCountDiv.innerHTML = `📸 تم العثور على ${galleryImages.length} صورة`;
+        displayGallery();
+    }
+    
+    function imageExists(url) {
+        return new Promise((resolve) => {
+            const img = new Image();
+            img.onload = () => resolve(true);
+            img.onerror = () => resolve(false);
+            img.src = url;
+        });
+    }
+    
+    function displayGallery() {
+        const container = document.getElementById('galleryContainer');
+        container.innerHTML = '';
+        
+        galleryImages.forEach((item, idx) => {
+            const box = document.createElement('div');
+            box.className = 'box gallery-box';
+            
+            const img = document.createElement('img');
+            img.src = item.src;
+            img.alt = 'Nursing meme';
+            img.style.cursor = 'pointer';
+            img.onclick = () => openLightbox(item.src);
+            
+            const likeBtn = document.createElement('button');
+            likeBtn.className = 'like-btn';
+            likeBtn.innerHTML = `❤️ Like <span class="like-count">${likes[idx]}</span>`;
+            likeBtn.onclick = (e) => {
+                e.stopPropagation();
+                likeImage(idx, likeBtn);
+            };
+            
+            box.appendChild(img);
+            box.appendChild(likeBtn);
+            container.appendChild(box);
+        });
+    }
+    
+    function updateTotalLikesDisplay() {
+        const display = document.getElementById('totalLikesDisplay');
+        if (display) display.innerHTML = `❤️ Total Likes: ${totalLikes}`;
+    }
+    
+    function likeImage(index, btnElement) {
+        likes[index]++;
+        totalLikes++;
+        updateTotalLikesDisplay();
+        const countSpan = btnElement.querySelector('.like-count');
+        if (countSpan) countSpan.textContent = likes[index];
+        btnElement.classList.add('liked');
+    }
+    
+    function openLightbox(imgSrc) {
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        lightbox.style.display = 'block';
+        lightboxImg.src = imgSrc;
+    }
+    
+    function closeLightbox() {
+        document.getElementById('lightbox').style.display = 'none';
+    }
+    
+    // ========== الفيديوهات (مع حفظ دائم) ==========
+    let videos = [];
+    
+    function loadSavedVideos() {
+        const savedVideos = localStorage.getItem('nurseVideos');
+        if (savedVideos) {
+            videos = JSON.parse(savedVideos);
+        }
+        displayVideos();
+        updateStorageInfo();
+    }
+    
+    function saveVideos() {
+        localStorage.setItem('nurseVideos', JSON.stringify(videos));
+        updateStorageInfo();
+    }
+    
+    function updateStorageInfo() {
+        const info = document.getElementById('storageInfo');
+        if (info) {
+            const totalSize = videos.reduce((sum, v) => sum + (v.size || 0), 0);
+            info.innerHTML = `📀 عدد الفيديوهات: ${videos.length} | تم حفظها تلقائياً`;
+        }
+    }
+    
+    function displayVideos() {
+        const container = document.getElementById('videoGallery');
+        if (!container) return;
+        
+        if (videos.length === 0) {
+            container.innerHTML = '<p style="color: #666;">📭 لا توجد فيديوهات بعد.</p>';
+            return;
+        }
+        
+        container.innerHTML = '';
+        videos.forEach((video, index) => {
+            const videoCard = document.createElement('div');
+            videoCard.className = 'box';
+            videoCard.style.width = '350px';
+            videoCard.style.padding = '15px';
+            videoCard.innerHTML = `
+                <video controls style="width: 100%; border-radius: 15px; max-height: 250px;">
+                    <source src="${video.data}" type="video/mp4">
+                    متصفحك لا يدعم تشغيل الفيديو
+                </video>
+                <p style="margin: 12px 0 8px; font-weight: bold;">🎬 ${video.name || 'فيديو رقم ' + (index + 1)}</p>
+                <p style="font-size: 12px; color: #888;">📅 ${video.date || ''}</p>
+                <button onclick="deleteVideo(${index})" style="background: #ff6b6b; padding: 5px 15px; font-size: 12px;">🗑️ حذف</button>
+            `;
+            container.appendChild(videoCard);
+        });
+    }
+    
+    function uploadVideo() {
+        if (!isAdmin) {
+            alert('❌ فقط المسؤول يمكنه إضافة فيديوهات');
+            return;
+        }
+        
+        const fileInput = document.getElementById('videoUpload');
+        const file = fileInput.files[0];
+        const message = document.getElementById('uploadMessage');
+        
+        if (!file) {
+            message.style.color = 'red';
+            message.innerText = '❌ الرجاء اختيار فيديو أولاً';
+            setTimeout(() => { message.innerText = ''; }, 2000);
+            return;
+        }
+        
+        if (file.size > 50 * 1024 * 1024) {
+            message.style.color = 'red';
+            message.innerText = '❌ حجم الفيديو كبير جداً (الحد الأقصى 50 ميجابايت)';
+            setTimeout(() => { message.innerText = ''; }, 2000);
+            return;
+        }
+        
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            videos.push({ 
+                name: file.name, 
+                data: e.target.result, 
+                date: new Date().toLocaleDateString('ar-EG'),
+                size: file.size
+            });
+            saveVideos();
+            displayVideos();
+            message.style.color = 'green';
+            message.innerText = '✅ تم إضافة الفيديو بنجاح!';
+            fileInput.value = '';
+            setTimeout(() => { message.innerText = ''; }, 2000);
+        };
+        
+        reader.onerror = function() {
+            message.style.color = 'red';
+            message.innerText = '❌ حدث خطأ أثناء قراءة الفيديو';
+            setTimeout(() => { message.innerText = ''; }, 2000);
+        };
+        
+        reader.readAsDataURL(file);
+    }
+    
+    function deleteVideo(index) {
+        if (!isAdmin) {
+            alert('❌ فقط المسؤول يمكنه حذف فيديوهات');
+            return;
+        }
+        
+        if (confirm('هل أنت متأكد من حذف هذا الفيديو؟')) {
+            videos.splice(index, 1);
+            saveVideos();
+            displayVideos();
+        }
+    }
+    
+    function deleteAllVideos() {
+        if (!isAdmin) {
+            alert('❌ فقط المسؤول يمكنه حذف الفيديوهات');
+            return;
+        }
+        
+        if (confirm('⚠️ هل أنت متأكد من حذف جميع الفيديوهات؟ هذا الإجراء لا يمكن التراجع عنه!')) {
+            videos = [];
+            saveVideos();
+            displayVideos();
+            document.getElementById('uploadMessage').style.color = 'green';
+            document.getElementById('uploadMessage').innerText = '✅ تم حذف جميع الفيديوهات';
+            setTimeout(() => {
+                document.getElementById('uploadMessage').innerText = '';
+            }, 2000);
+        }
+    }
+    
+    window.onload = () => {
+        updateStressDisplay();
+        loadImagesFromFolder();
+        loadSavedVideos();
+    };
+</script>
+
+</body>
+</html>
